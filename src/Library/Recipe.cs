@@ -29,5 +29,16 @@ namespace Recipies
         {
             this.Steps.Remove(step);
         }
+        
+        public void LoadFromJson(string json)
+        {
+            Recipe deserialized = JsonSerializer.Deserialize<Recipe>(json);
+            this.Steps = deserialized.Steps;
+        }
+
+        public string ConvertToJson()
+        {
+            return JsonSerializer.Serialize(this);
+        }
     }
 }
